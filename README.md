@@ -159,7 +159,7 @@ Gateways no longer auto-update. Each Pi runs a **pinned image tag** set in
 | canary | `canary` | one lab Pi; runs a release for a week (zero re-uploads, zero `api` errors in `/status`) before promotion |
 | stable | `stable` | the fleet |
 
-Promote by re-tagging on Docker Hub (`docker buildx imagetools create -t neurotechhub/hublink-gateway:stable neurotechhub/hublink-gateway:canary`),
+Promote by re-tagging in ECR Public (`docker buildx imagetools create -t public.ecr.aws/k3u6u5c1/hublink/gateway:stable public.ecr.aws/k3u6u5c1/hublink/gateway:canary`),
 then on each Pi: `cd /opt/hublink && docker-compose pull && docker-compose up -d`.
 Never push to `:latest`; nothing reads it any more. Versioned tags (`v1.0.0`,
 `v2.0.0`) are also pushed so a Pi can be pinned to an exact build.
